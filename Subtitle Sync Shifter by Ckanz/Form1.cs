@@ -38,6 +38,7 @@ namespace Subtitle_Sync_Shifter_by_Ckanz
             {
                 text = File.ReadAllText(f);
                 //textBox1.Text += f + "\r\n";
+                label4.Text = f + ", ";
                 foreach (string l in File.ReadAllLines(f))
                 {
                     if (Regex.IsMatch(l, " --> "))
@@ -68,8 +69,8 @@ namespace Subtitle_Sync_Shifter_by_Ckanz
         {
             if (miliseconds <= 0 || textBox4.Text == null || textBox4.Text == "") label1.Text = "miliseconds cant null or less than 1";
             label1.Text = "Wait...";
-            textBox3.Text = "";
-            foreach (string l in line)
+            //textBox3.Text = "";
+                foreach (string l in line)
             {
                 //string newText = "";
 
@@ -147,7 +148,7 @@ namespace Subtitle_Sync_Shifter_by_Ckanz
         {
             if (miliseconds <= 0 || textBox4.Text == null || textBox4.Text == "") label1.Text = "miliseconds cant null or less than 1";
             label1.Text = "Wait...";
-            textBox3.Text = "";
+            //textBox3.Text = "";
             foreach (string l in line)
             {
                 //string newText = "";
@@ -203,7 +204,7 @@ namespace Subtitle_Sync_Shifter_by_Ckanz
 
                 //StreamReader streamReader = new StreamReader(f, Encoding.UTF8);
                 //string text = streamReader.ReadToEnd();
-                string fs = Path.Combine("C:\\scraped.txt");
+                string fs = Path.Combine(f + "NEW");
                 string results = text;
                 StringBuilder sv = new StringBuilder(text);
                 //foreach (string l in File.ReadAllLines(f))
@@ -233,12 +234,12 @@ namespace Subtitle_Sync_Shifter_by_Ckanz
                 //File.WriteAllText(fs, results);
                 label1.Text = "Done File In : " + fs.ToString();
 
-                results = "";
-                sv.Clear();
-                text = "";
-                newLine.Clear();
-                line.Clear();
-                values.Clear();
+                //results = "";
+                //sv.Clear();
+                //text = "";
+                //newLine.Clear();
+                //line.Clear();
+                //values.Clear();
 
             }
             
