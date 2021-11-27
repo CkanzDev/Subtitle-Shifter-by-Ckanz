@@ -191,6 +191,7 @@ namespace Subtitle_Sync_Shifter_by_Ckanz
 
                     //textBox3.Text += ls + "\r\n";
                     label1.Text = "Done! click save";
+                    
 
                 }
             }
@@ -198,13 +199,23 @@ namespace Subtitle_Sync_Shifter_by_Ckanz
 
         private void Saveclicks_Click(object sender, EventArgs e)
         {
-                foreach (String f in openfiledialog.FileNames)
+            
+
+            foreach (String f in openfiledialog.FileNames)
                 {
+                string subPath = "OutputFileShifterCkanz"; // Your code goes here
+                bool exists = System.IO.Directory.Exists(Path.GetDirectoryName(f) + @"\" + subPath);
+                if (!exists)
+                {
+                    System.IO.Directory.CreateDirectory(Path.GetDirectoryName(f) + @"\" + subPath);
+                }
+                //MessageBox.Show(Path.GetDirectoryName(f) + @"\" + subPath + @"\" + Path.GetFileName(f) + ".srt");
+
                 //textBox1.Text += f + "\r\n";
 
                 //StreamReader streamReader = new StreamReader(f, Encoding.UTF8);
                 //string text = streamReader.ReadToEnd();
-                string fs = Path.Combine(f + "NEW");
+                string fs = Path.GetDirectoryName(f) +  @"\" + subPath + @"\" + Path.GetFileName(f);
                 string results = text;
                 StringBuilder sv = new StringBuilder(text);
                 //foreach (string l in File.ReadAllLines(f))
@@ -224,6 +235,7 @@ namespace Subtitle_Sync_Shifter_by_Ckanz
                 //StreamWriter sw = new StreamWriter(fs, true, Encoding.UTF8, BufferSize);
                 //TextWriter w = new StreamWriter(new BufferedStream(new FileStream(fs, FileMode.Create)));
                 //w.WriteLine(results);
+
                 using (var stream = new FileStream(
     fs, FileMode.Create, FileAccess.Write, FileShare.Write, 4096))
                 {
